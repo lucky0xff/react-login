@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from "axios";
+import Highcharts from './components/Highchart'
 import './App.css';
 
 const login = ({username,password}) => {
@@ -58,7 +59,8 @@ function App() {
     <div className="card container mt-5">
       {isLogin ? (
         <>
-          <h1>Welcome {username} </h1>
+          <h1>Welcome {username}</h1>
+          <Highcharts/>
           <button onClick={()=> setIsLogin(false)} className="btn btn-dark">LogOut</button>
         </>
       ):(
