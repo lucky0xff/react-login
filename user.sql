@@ -1,2 +1,0 @@
-INSERT INTO `user` VALUES ('123', '123');
-INSERT INTO `user` VALUES ('456', '456');

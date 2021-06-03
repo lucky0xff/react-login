@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+// const Memcached = require('memcached');
 const mysql = require("mysql");
 
 // 创建连接
@@ -10,7 +11,7 @@ var connection = mysql.createConnection({
   database : 'mydb',
   port     : '3306'
 });
-connection.connect();
+// connection.connect();
 
 // 解决跨域请求问题!!!
 app.all('*', function(req, res, next) {
@@ -22,7 +23,9 @@ app.all('*', function(req, res, next) {
   next();
 });
 
+
 // http://127.0.0.1:8081/login?username=mhy&password=11
+
 app.get('/login',function (req,res) {
   var response = {
      "username":req.query.username,
@@ -46,6 +49,7 @@ app.get('/login',function (req,res) {
   console.log(response);
   //res.end(JSON.stringify(response));
 })
+
 
 // 开启服务器
 var server = app.listen(8081, function () {
