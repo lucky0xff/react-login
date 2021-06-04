@@ -8,19 +8,21 @@ const login = ({username,password}) => {
     axios.get(`http://localhost:8081/login?username=${username}&password=${password}`).then(response=>{
       switch (response.data) {
         case 0: // 错误
+          // 调用reject方法，Promise状态变为失败（rejected）
           reject()
           break;
         case 1: // 正确
+          // 调用resolve方法，Promise状态变为成功（fulfilled）
           resolve()
           break;
         default:
           break;
       }
       console.log(response)
-      resolve()
+      // resolve()
     },(error=>{
       console.log(error)
-      reject()
+      // reject()
     }))
   })
 }
@@ -34,10 +36,13 @@ function App() {
   const [isLogin, setIsLogin] = useState(false);
 
   // function
+  // async用于表示函数是一个异步函数 异步函数也就是意味着这个函数的执行不会阻塞后面代码的执行
   const handleSubmit = async(e) => {
+    // 阻止表单提交的时候重新加载页面
     e.preventDefault()
     setIsLoading(true)
     try {
+      // 等待login
       await login({username,password})
       setUsername('')
       setPassword('')
